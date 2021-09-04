@@ -1,0 +1,4 @@
+[submodule "bl_mcu_sdk"]
+	path = bl_mcu_sdk
+	url = https://github.com/metro94/bl_mcu_sdk
+	branch = rv_dap_plus
