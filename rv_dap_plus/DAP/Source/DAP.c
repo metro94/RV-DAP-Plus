@@ -1,4 +1,6 @@
 /*
+ * Modifications Copyright (c) 2021 metro94 <flattiles@gmail.com>
+ *
  * Copyright (c) 2013-2021 ARM Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -107,8 +109,10 @@ static uint8_t DAP_Info(uint8_t id, uint8_t *info) {
                 ((SWO_STREAM != 0U)      ? (1U << 6) : 0U) |
                 ((DAP_UART != 0U)        ? (1U << 7) : 0U);
 
-      info[1] = ((DAP_UART_USB_COM_PORT != 0) ? (1U << 0) : 0U);
-      length = 2U;
+      // Workaround: several OpenOCD binaries could not support 2 bytes response
+      // info[1] = ((DAP_UART_USB_COM_PORT != 0) ? (1U << 0) : 0U);
+      // length = 2U;
+      length = 1U;
       break;
     case DAP_ID_TIMESTAMP_CLOCK:
 #if (TIMESTAMP_CLOCK != 0U)
